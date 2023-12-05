@@ -1,0 +1,14 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/Springbasic?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: yjh20030916
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.nju.spring_hello.data
+
+

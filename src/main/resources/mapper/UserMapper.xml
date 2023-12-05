@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nju.spring_hello.Dao.UserDao">
+    <insert id="saveUser" parameterType="com.nju.spring_hello.Data.User">
+        insert into `Player` (username,password)  VALUES (#{username},#{password})
+    </insert>
+    <select id="getUserByUsername" parameterType="String" resultMap="User">
+        select * from `Player` where username = #{username}
+    </select>
+    <!-- 这里相当于指定一个id叫User的resultmap,可以有很多的resultMap-->
+    <resultMap id="User" type="com.nju.spring_hello.Data.User">
+        <id column="uid" property="uid"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+</mapper>
