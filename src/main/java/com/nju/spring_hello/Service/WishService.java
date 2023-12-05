@@ -6,6 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 public interface WishService {
-    public boolean saveWish(Wish wish);
-    public Wish[] getWishesByUid(int uid);
+    public String saveWish(Wish wish);
+    public Wish[] getWishesByUid(Integer uid);
 }

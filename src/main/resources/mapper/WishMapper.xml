@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nju.spring_hello.Dao.WishDao">
     <insert id="saveWish" parameterType="com.nju.spring_hello.Data.Wish" >
-        insert into `Wish` (uid, sex,username,wish)  VALUES (#{uid},#{sex},#{username},#{wish})
+        insert into `WishList` (uid, sex,username,wish)  VALUES (#{uid},#{sex},#{username},#{wish})
     </insert>
-    <select id="getWishesByUid" parameterType="String" resultMap="Wish">
+    <select id="getWishesByUid" parameterType="Integer" resultMap="Wish">
         select * from `WishList` where uid = #{uid}
     </select>
     <!-- 这里相当于指定一个id叫User的resultmap,可以有很多的resultMap-->

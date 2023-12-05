@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface WishDao {
     public boolean saveWish(int uid,String username,String sex, String wish);
-    public Wish[] getWishesByUid(int uid);
+    public Wish[] getWishesByUid(Integer uid);
 }

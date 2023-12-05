@@ -12,10 +12,17 @@ public class WishServiceImpl implements WishService {
     // TODO： 所有的功能都需要通过mapping来访问吗
     @Autowired
     WishDao wishDao;
-    public boolean saveWish(Wish wish){
-        return wishDao.saveWish(wish.getUid(),wish.getUsername(), wish.getSex(),wish.getWish());
+    public String saveWish(Wish wish){
+        try{
+            wishDao.saveWish(wish.getUid(),wish.getUsername(), wish.getSex(),wish.getWish());
+            return "save wish successfully\n";
+        }catch (Exception e){
+            e.printStackTrace();
+            return "save wish failed\n";
+        }
+
     }
-    public Wish[] getWishesByUid(int uid){
+    public Wish[] getWishesByUid(Integer uid){
         return wishDao.getWishesByUid(uid);
     }
 }

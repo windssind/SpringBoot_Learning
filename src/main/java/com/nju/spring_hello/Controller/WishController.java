@@ -16,10 +16,10 @@ public class WishController {
     @Autowired
     WishService wishService;
     @PostMapping("save")
-    public boolean saveWish(@RequestBody WishForm wishForm){
+    public String saveWish(@RequestBody WishForm wishForm){
         if (wishForm == null) {
             System.out.println("null wish\n");
-            return false;
+            return "please check carefully of your input\n";
         }
         Wish wish = new Wish();
         BeanUtils.copyProperties(wishForm, wish);
@@ -28,11 +28,16 @@ public class WishController {
 
 
     @PostMapping("/get")
-    public WishVO[] getWishesByUid(int uid){
-        Wish[] wishes = wishService.getWishesByUid(uid);
-        if (wishes == null) return null;
+    public WishVO[] getWishesByUid(@RequestBody GetWishForm getWishForm){
+        System.out.println(getWishForm.getUid());
+        Wish[] wishes = wishService.getWishesByUid(getWishForm.getUid());
+        if (wishes == null) {
+            System.out.println("wished is null\n");
+            return null;
+        }
         WishVO[] wishVOS = new WishVO[wishes.length];
         for (int i = 0; i < wishVOS.length; ++i){
+            wishVOS[i] = new WishVO();
             BeanUtils.copyProperties(wishes[i], wishVOS[i]);
         }
         return wishVOS;
